@@ -44,7 +44,7 @@ The cortico-cortical hierarchy can be updated by including the thalamo-cortical 
    - ```inputexpanded_TC9.xls```, which include information on TC connections such as sources, targets, and FF/FB mapping. This file is          read in ```run_TCCT.py``` for iteration with TC connections. 
    - ```ghs_TC.xls``` which contains global hierarchy scores of TC connectivity data
 
-##```func_unsupervised_TC.py``` 
+## ```func_unsupervised_TC.py``` 
   *	Contains functions needed for mapping TC clusters to FF/FB by maximizing the global hierarchy score of the given thalamo-cortical       connectivity data. As the initial thalamic hierarchical positions and the FF/FB mapping are based on the cortical hierarchy             constructed from “run_CC.py”, the cortical hierarchy scores from CC connectivity should be read & changed accordingly (in               ```df_cortex=pd.read_excel(r'./Output/CC_conf_iter.xls')``` )  
 
 ##	```IterativeMethod.py```
