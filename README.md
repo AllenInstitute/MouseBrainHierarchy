@@ -1,4 +1,4 @@
-# CorticalThalamic_Hierarchy
+# Mouse Brain Hierarchy
 
 * Hierarchy searching algorithm based on layer-projection patterns of cortico-cortical, thalamo-cortical, and cortico-thalamic connections in Cre-transgenic mice
 * Codes used in in Harris et al (2019) “The organization of corticocortical, thalamocortical, and corticothalamic connections by layer and cell class in the mouse brain”
