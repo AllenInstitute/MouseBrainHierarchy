@@ -78,4 +78,5 @@ The cortico-cortical +thalamo-cortical hierarchy can be further updated by inclu
 
 To evaluate how hierarchical the mouse brain is, compare the global hierarchy score of the original connectivity data to the global hierarchy scores of shuffled connectivity data. To do this, use ```run_CC_shuffled.py```, ```run_TC_shuffled.py```, and ```run_TCCT_shuffled.py```. 
 
-
+## Terms of Use
+https://alleninstitute.org/legal/terms-use/
