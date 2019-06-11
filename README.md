@@ -67,7 +67,7 @@ The cortico-cortical +thalamo-cortical hierarchy can be further updated by inclu
     -	```TC_CCnoconf_iter.xls``` or ```TC_CCconf_iter.xls```
     -	```inputexpanded_CC9.xls```
     -	```CC_noconf_iter.xls``` or ```CC_conf_iter.xls``` 
-   * Output files:
+  * Output files:
     - ```inputexpanded_TC9CT2.xls```, which include information on TC+CT connections such as sources, targets, and FF/FB mapping.
     - ```TCCT_CCnoconf_iter.xls``` or ```TCCT_CCconf_iter.xls```, which include hierarchy scores of all cortical and thalamic regions before & after iterations
     - ```ghs_TCCT.xls``` which contains global hierarchy scores of TC + CT connectivity data
