@@ -42,7 +42,7 @@ The cortico-cortical hierarchy can be updated by including the thalamo-cortical 
     -	```CC_TC_CT_clusters.xlsx```
     -	```CC_conf_iter.xls``` or ```CC_noconf_iter.xls```
     - ```inputexpanded_CC9.xls```
-  *	Output files:
+  * Output files:
     - ```TC_CCconf_iter.xls``` or ```TC_CCnoconf_iter.xls```, which include hierarchy scores of all cortical and thalamic regions before & after iterations. 
     - ```inputexpanded_TC9.xls```, which include information on TC connections such as sources, targets, and FF/FB mapping. This file is          read in ```run_TCCT.py``` for iteration with TC connections. 
     - ```ghs_TC.xls``` which contains global hierarchy scores of TC connectivity data
@@ -66,10 +66,9 @@ The cortico-cortical +thalamo-cortical hierarchy can be further updated by inclu
     -	```inputexpanded_TC9.xls```
     -	```TC_CCnoconf_iter.xls``` or ```TC_CCconf_iter.xls```
     -	```inputexpanded_CC9.xls```
-    -	```CC_noconf_iter.xls``` or ```CC_conf_iter.xls```
-  
-  * Output files:
-  -	```inputexpanded_TC9.xls```
+    -	```CC_noconf_iter.xls``` or ```CC_conf_iter.xls``` 
+   * Output files:
+    -	```inputexpanded_TC9.xls```
     -```inputexpanded_TC9CT2.xls```, which include information on TC+CT connections such as sources, targets, and FF/FB mapping.
     -```TCCT_CCnoconf_iter.xls``` or ```TCCT_CCconf_iter.xls```, which include hierarchy scores of all cortical and thalamic regions before & after iterations
     -```ghs_TCCT.xls``` which contains global hierarchy scores of TC + CT connectivity data
