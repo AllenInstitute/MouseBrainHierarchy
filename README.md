@@ -12,14 +12,14 @@ We are releasing this code to the public as a tool we expect others to use. Ques
 ## Cortico-cortical hierarchy
 
 ### ```run_CC.py```
-  * The main hierarchy generating code based on cortico-cortical connection info
+  * The main hierarchy generating code based on cortico-cortical connectivity data.
   * Calls:
     - ```func_unsupervised_CC.py```
     - ```IterativeMethod.py```
   *	Input files:
     -	```CC_TC_CT_clusters.xlsx```
   *	Output files:
-    -	```CC_conf_iter.xls``` & ```CC_noconf_iter.xls```which include hierarchy scores of all cortical regions before & after iterations with        or without Cre-confidence. This file is read in ```run_TC.py``` and ```func_unsupervised_TC.py```.
+    -	```CC_conf_iter.xls``` & ```CC_noconf_iter.xls```which include hierarchy scores of all cortical regions before & after iterations with or without Cre-confidence. This file is read in ```run_TC.py``` and ```func_unsupervised_TC.py```.
     -	```inputexpanded_CC9.xls```, which include information on CC connections such as sources, targets, and FF/FB mapping. This file is          read in ```run_TC.py``` for iteration with TC connections. 
     -	```ghs_CC.xls``` which contains global hierarchy scores of TC connectivity data
 
