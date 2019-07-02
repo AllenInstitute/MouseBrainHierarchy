@@ -67,8 +67,8 @@ if (module == 'inter') or (module == 'inter_predefined'):
  
 # In[]: Trim the dataframe 
 
-dfV1 = df[['source','target','creline','NEW Cluster with MD avg','Cortical Source Module', 'Cortical Target Module']]
-dfV1=dfV1.rename(columns={"NEW Cluster with MD avg": "clu"})
+dfV1 = df[['source','target','creline','Cluster ID','Cortical Source Module', 'Cortical Target Module']]
+dfV1=dfV1.rename(columns={"Cluster ID": "clu"})
 dfV1 = dfV1.reset_index(drop=True)
 dfV1['clu'] = dfV1['clu'].apply(np.int64)
     
