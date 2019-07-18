@@ -61,8 +61,8 @@ T_areas = h_CC_TC[h_CC_TC["CortexThalamus"]=="T"]["areas"].unique()
 # In[]: 2 clusters (FF/FB) based on LDA of cortico-thalamic source-line-target pairs (dfCT)
 
 dfCT = pd.read_excel(input_dir+"CT_sourcelayer_FFB.xls") 
-dfCT=dfCT[['source','target','ffb','Cortical Source Module']]
-
+dfCT=dfCT[['source','target','FFB_LDA','Cortical Source Module']]
+dfCT = dfCT.rename(columns={"FFB_LDA":"ffb"})
 
 # In[]: For intra medial, select only the areas within the chosen module for cortico-thalamic connections (dfCT)
 
