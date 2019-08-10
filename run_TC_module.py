@@ -22,12 +22,12 @@ based on the cortico-cortical (CC) & thalamo-cortical (TC) connectivity data.
 CreConf = 1                    # 1 if using CC hierarhcy with Cre-confidence; 0 if not
 
 input_dir = r'./Input/'        # Directory with the file "CC_TC_CT_clusters.xlsx" & "clustermapping.xlsx"
-output_dir = r'./Output/'      # Directory to save the ouputs from the experimental data
+output_dir = r'./Output/module/'      # Directory to save the ouputs from the experimental data
 
 
 # In[]: Define the module. 
 
-module = 'inter_predefined'
+module = 'inter_predefined' #'VisualMedial' #'inter_predefined'
 
 # In the paper, we used the following: 'VisualMedial' & 'inter_predefined'
 # Possible modules: 'VisualMedial', 'Visual', 'Medial', 'Auditory', 'Somatomotor', 'PFC', 'Lateral', 'inter_predefined', 'inter'
@@ -49,7 +49,7 @@ clu_ffb = clu_ffb.rename(columns={'TC': 'ffb'})
 if (module != 'inter') and (module != 'inter_predefined'):   
 
     if module == 'VisualMedial':
-        df.loc[((df["Cortical Target Module"] == "Visual")|(df["Cortical Target Module"] == "Medial")),"Cortical Target Module"]='VisualMedial2'
+        df.loc[((df["Cortical Target Module"] == "Visual")|(df["Cortical Target Module"] == "Medial")),"Cortical Target Module"]='VisualMedial'
         df = df[(df["Cortical Target Module"] == module)]
         df = df[(df["source"]!='RSPagl')&(df["target"]!='RSPagl')&(df["source"]!='RSPd')&(df["target"]!='RSPd')
         &(df["source"]!='RSPv')&(df["target"]!='RSPv')]
@@ -172,7 +172,7 @@ columns = ['areas','hrc','hr']
 dfiT = pd.DataFrame(data,columns=columns)
 dfiT.head()
 
-dfiT.to_excel(output_dir+'initialhierarchy_TC9_'+module+'.xls')
+#dfiT.to_excel(output_dir+'initialhierarchy_TC9_'+module+'.xls')
 
 # In[ ]: Iterate thalamic + cortical hierarhcy scores
 
@@ -247,11 +247,12 @@ for i_area in range(0,n_area):
         hr_iter.loc[i_area,'CortexThalamus'] = 'T'
 
 hr_iter = hr_iter[['areas','CortexThalamus', 0,n_iter] ]  
+hr_iter_save = hr_iter #hr_iter[(hr_iter.CortexThalamus=='C')]
 
 if CreConf == 1:
-    hr_iter.to_excel(output_dir+'TC_CCconf_iter_'+module+'.xls')
+    hr_iter_save.to_excel(output_dir+'TC_CCconf_iter_'+module+'.xls')
 elif CreConf == 0: 
-    hr_iter.to_excel(output_dir+'TC_CCnoconf_iter_'+module+'.xls')
+    hr_iter_save.to_excel(output_dir+'TC_CCnoconf_iter_'+module+'.xls')
 
 ##########################################################
 

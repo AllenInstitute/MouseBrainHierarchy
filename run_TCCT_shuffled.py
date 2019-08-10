@@ -19,7 +19,8 @@ computes the global hierarchy scores of the shuffled data.
 # In[]: Set input and output directories 
 
 input_dir = r'./Input/'        # Directory with the file "CC_TC_CT_clusters.xlsx" & "CT_sourcelayer_FFB.xls"
-output_dir = r'./Output_shuffled/'   # Directory to save the ouputs from the shuffled experimental data
+input_dir2 = r'./Output/'               # Directory with the file  "TC_CCconf_iter.xls" or "TC_CCnoconf_iter.xls", "ghc_TC.xls"
+output_dir = r'./Output/shuffled/'   # Directory to save the ouputs from the shuffled experimental data
 
 ''' ATTENTION! Change the "df_cortex" accordingly in func_unsupervised_TC as well! '''
 CreConf = 1                 # 1 if using CC hierarhcy with Cre-confidence; 0 if not
@@ -33,9 +34,9 @@ df=df[(df.hemi == "ipsi")&(df.creline != "C57BL/6J / Emx1")&(df.target != "VISC"
 # In[]: Cortical and thalamic hierarchy from CC+TC iteration
 
 if CreConf == 0:
-    h_CC_TC=pd.read_excel(output_dir+"TC_CCnoconf_iter.xls")
+    h_CC_TC=pd.read_excel(input_dir2+"TC_CCnoconf_iter.xls")
 elif CreConf == 1:
-    h_CC_TC=pd.read_excel(output_dir+"TC_CCconf_iter.xls")
+    h_CC_TC=pd.read_excel(input_dir2+"TC_CCconf_iter.xls")
     
 C_areas = h_CC_TC[h_CC_TC["CortexThalamus"]=="C"]["areas"].unique()
 T_areas = h_CC_TC[h_CC_TC["CortexThalamus"]=="T"]["areas"].unique()
@@ -49,7 +50,7 @@ dfCT = dfCT.rename(columns={"FFB_LDA":"ffb"})
 
 # In[]: 9 clusters of thalamo-cortical source-line-target pairs (dfTC)
 
-dfTC=pd.read_excel(output_dir+"inputexpanded_TC9.xls")
+dfTC=pd.read_excel(input_dir2+"inputexpanded_TC9.xls")
 dfTC=dfTC[['source','target','ffb_c']]
 dfTC = dfTC.rename(columns={"ffb_c":"ffb"})
 

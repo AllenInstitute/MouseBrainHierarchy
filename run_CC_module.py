@@ -22,11 +22,11 @@ based on the cortico-cortical (CC) connectivity data.
 CreConf = 1 # 1 if using CC hierarhcy with Cre-confidence; 0 if not
 
 input_dir = r'./Input/'        # Directory with the file "CC_TC_CT_clusters.xlsx" & "clustermapping.xlsx"
-output_dir = r'./Output/'      # Directory to save the ouputs from the experimental data
+output_dir = r'./Output/module/'      # Directory to save the ouputs from the experimental data
 
 # In[]: Define the module. 
 
-module = 'inter_predefined'
+module = 'VisualMedial' #'inter_predefined'
 
 # In the paper, we used the following: 'VisualMedial' & 'inter_predefined'
 # Possible modules: 'VisualMedial', 'Visual', 'Medial', 'Auditory', 'Somatomotor', 'PFC', 'Lateral', 'inter_predefined', 'inter'
@@ -205,7 +205,7 @@ columns = ['areas','hrc','hr']
 dfi = pd.DataFrame(data,columns=columns)
 dfi.head()
 
-dfi.to_excel(output_dir+'initialhierarchy_CC9_'+module+'.xls')
+#dfi.to_excel(output_dir+'initialhierarchy_CC9_'+module+'.xls')
 
 # In[] : Iterate cortical hierarhcy scores to refine the hierarhcy levels
 

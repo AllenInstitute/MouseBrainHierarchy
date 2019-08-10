@@ -19,7 +19,8 @@ computes the global hierarchy scores of the shuffled data.
 # In[]: Set input and output directories 
 
 input_dir = r'./Input/'        # Directory with the file "CC_TC_CT_clusters.xlsx"
-output_dir = r'./Output_shuffled/'      # Directory to save the ouputs from the shuffled experimental data
+input_dir2 = r'./Output/'               # Directory with the file "ghc_TC.xls"
+output_dir = r'./Output/shuffled/'      # Directory to save the ouputs from the shuffled experimental data
 
 ''' ATTENTION! Change the "df_cortex" accordingly in func_unsupervised_TC as well! '''
 CreConf = 1                    # 1 if using CC hierarhcy with Cre-confidence; 0 if not
@@ -291,7 +292,7 @@ pd.DataFrame(hr_iter_ct_shuffled).to_excel(output_dir+'TC_hg_shuffled_all_iter.x
 
 """Global hierarchy scores of the original thalamo-cortical connectivity"""
 
-df_hg_TC = pd.read_excel(input_dir+'ghs_TC.xls')
+df_hg_TC = pd.read_excel(input_dir2+'ghs_TC.xls')
 
 hg_all_init = df_hg_TC["hg_TC_init"][0]
 hg_cortex_iter = df_hg_TC["hg_cortex_TC_iter"][0]

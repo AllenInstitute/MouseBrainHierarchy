@@ -20,7 +20,8 @@ computes the global hierarchy scores of the shuffled data.
 # In[]: Set input and output directories 
 
 input_dir = r'./Input/'                     # Directory with the file "CC_TC_CT_clusters.xlsx"
-output_dir = r'./Output_shuffled/'          # Directory to save the ouputs from the shuffled experimental data
+input_dir2 = r'./Output/'                   # Directory with the file "ghc_CC.xls"
+output_dir = r'./Output/shuffled/'          # Directory to save the ouputs from the shuffled experimental data
 
 # In[]: Read in the excel file with source-target-creline pairs and their cluster numbers. Construct a dataframe using only the cortico-cortical connections. 
 
@@ -55,7 +56,7 @@ dfV_concise = dfV[["source","target","creline","clu"]].copy()
 
 # In[]: Global hierarchy scores of shuffled CC connectivity data
 
-n_iter = 10
+n_iter = 10 # or 5, for fast process
 n_shuffle = 100
 by_creline = 1   # 1 if shuffle within each Cre-line; 0 if shuffle across Cre-lines 
 line_list = dfV_concise["creline"].unique()
@@ -207,8 +208,10 @@ for i_shuffle in range(0,n_shuffle):
     
     ###########################################################################
     '''global hierarchy score of the shuffled data before & after iteration, without Cre-confidence'''
-    hr_init_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht0 - dfV_temp.hs0))
-    hr_iter_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+#    hr_init_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht0 - dfV_temp.hs0))
+#    hr_iter_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+    hr_init_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_nc*(dfV_temp.ht0 - dfV_temp.hs0))
+    hr_iter_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_nc*(dfV_temp.ht_iter - dfV_temp.hs_iter))
     
     dfV_temp = dfV_shuffled[['source','target','clu','ffb_c','ffb_nc','conf']]
     dfi_t = dfi_temp_conf[['areas','h0','h_iter']]
@@ -220,9 +223,12 @@ for i_shuffle in range(0,n_shuffle):
     dfV_temp =dfV_temp.rename(columns={"h0": "ht0"})
     dfV_temp = dfV_temp.dropna() 
     
-    
-    hrc_init_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht0 - dfV_temp.hs0))
-    hrc_iter_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+     ###########################################################################
+    '''global hierarchy score of the shuffled data before & after iteration, with Cre-confidence'''   
+#    hrc_init_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht0 - dfV_temp.hs0))
+#    hrc_iter_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+    hrc_init_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_c*(dfV_temp.ht0 - dfV_temp.hs0))
+    hrc_iter_shuffled[i_shuffle] = np.mean(dfV_temp.ffb_c*(dfV_temp.ht_iter - dfV_temp.hs_iter))
     ###########################################################################    
     
     
@@ -232,7 +238,7 @@ pd.DataFrame(hrc_iter_shuffled).to_excel(output_dir +'CC_hg_iter_shuffled.xls')
 # In[]: Plot global hierarchy scores of 100 shuffled data with the global hierarchy score of the original data
 
 """Global hierarchy scores of the original cortico-cortical connectivity"""
-df_hg_CC = pd.read_excel(input_dir+'ghc_CC.xls')
+df_hg_CC = pd.read_excel(input_dir2+'ghc_CC.xls')
 
 hg_CC_conf_init = df_hg_CC["hg_CC_conf_init"][0]
 hg_CC_conf_iter = df_hg_CC["hg_CC_conf_iter"][0]

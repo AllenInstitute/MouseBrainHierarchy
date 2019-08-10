@@ -73,7 +73,7 @@ c0=2**num_clu
 def ffb_c (cls):
     """Direction of each cluster with Cre-confidence"""
     b=(bin(c0+jmax)[-(cls)])
-    return -(2*int(b)-1)    # or (2*int(b)-1), depending on the final direction of the hierarchy
+    return (2*int(b)-1)    # or -(2*int(b)-1), depending on the final direction of the hierarchy
 
 
 def ffb_nc (cls):
@@ -262,8 +262,10 @@ dfV_temp = dfV_temp.join(dfi_t.set_index('areas'), on ='target')
 dfV_temp =dfV_temp.rename(columns={"h_iter": "ht_iter"})
 dfV_temp = dfV_temp.dropna()
 
-hg_CC_init = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht_init - dfV_temp.hs_init))
-hg_CC_iter = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+#hg_CC_init = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht_init - dfV_temp.hs_init))
+#hg_CC_iter = np.mean(dfV_temp.ffb_nc*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+hg_CC_init = np.mean(dfV_temp.ffb_nc*(dfV_temp.ht_init - dfV_temp.hs_init))
+hg_CC_iter = np.mean(dfV_temp.ffb_nc*(dfV_temp.ht_iter - dfV_temp.hs_iter))
 
 
 dfV_temp = dfV[['source','target','clu','ffb_c','ffb_nc','conf']]
@@ -281,9 +283,10 @@ dfV_temp = dfV_temp.join(dfi_t.set_index('areas'), on ='target')
 dfV_temp =dfV_temp.rename(columns={"h_iter": "ht_iter"})
 dfV_temp = dfV_temp.dropna()
 
-hg_CC_conf_init = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht_init - dfV_temp.hs_init))
-hg_CC_conf_iter = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
-
+#hg_CC_conf_init = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht_init - dfV_temp.hs_init))
+#hg_CC_conf_iter = np.mean(dfV_temp.ffb_c*np.sign(dfV_temp.ht_iter - dfV_temp.hs_iter))
+hg_CC_conf_init = np.mean(dfV_temp.ffb_c*(dfV_temp.ht_init - dfV_temp.hs_init))
+hg_CC_conf_iter = np.mean(dfV_temp.ffb_c*(dfV_temp.ht_iter - dfV_temp.hs_iter))
 
 
 print('hg of CC cortex='+str(hg_CC_init))

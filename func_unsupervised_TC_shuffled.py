@@ -50,8 +50,8 @@ def assign_hierarchy_levels(df, i_shuffle,  j):
 
     ##################################################################
     '''Change the file name accordingly'''
-    df_cortex=pd.read_excel(r'./Output_shuffled/CCshuffled_conf_iter'+str(i_shuffle)+'.xls')
-    # df_cortex=pd.read_excel(r'./Output_shuffled/CCshuffled_noconf_iter'+str(i_shuffle)+'.xls')
+    df_cortex=pd.read_excel(r'./Output/shuffled/CCshuffled_conf_iter'+str(i_shuffle)+'.xls')
+    # df_cortex=pd.read_excel(r'./Output/shuffled/CCshuffled_noconf_iter'+str(i_shuffle)+'.xls')
     ##################################################################
 
     df = df.join(df_cortex.set_index('areas'), on='target')    

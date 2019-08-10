@@ -20,12 +20,12 @@ based on the cortico-cortical (CC), thalamo-cortical (TC), and cortico-thalamic 
 CreConf = 1                    # 1 if using CC hierarhcy with Cre-confidence; 0 if not
 
 input_dir = r'./Input/'        # Directory with the file "CC_TC_CT_clusters.xlsx" & "clustermapping.xlsx"
-output_dir = r'./Output/'      # Directory to save the ouputs from the experimental data
+output_dir = r'./Output/module/'      # Directory to save the ouputs from the experimental data
 
 
 # In[]: Define the module. 
 
-module = 'inter_predefined'
+module = 'VisualMedial' #'VisualMedial' #'inter_predefined'
 
 # In the paper, we used the following: 'VisualMedial' & 'inter_predefined'
 # Possible modules: 'VisualMedial', 'Visual', 'Medial', 'Auditory', 'Somatomotor', 'PFC', 'Lateral', 'inter_predefined', 'inter'
@@ -69,7 +69,7 @@ dfCT = dfCT.rename(columns={"FFB_LDA":"ffb"})
 if (module != 'inter') and (module != 'inter_predefined'):     
 
     if module == 'VisualMedial':
-        dfCT.loc[((dfCT["Cortical Source Module"] == "Visual")|(dfCT["Cortical Source Module"] == "Medial")),"Cortical Source Module"]='VisualMedial2'
+        dfCT.loc[((dfCT["Cortical Source Module"] == "Visual")|(dfCT["Cortical Source Module"] == "Medial")),"Cortical Source Module"]='VisualMedial'
         dfCT = dfCT[(dfCT["Cortical Source Module"] == module)]
         dfCT = dfCT[(dfCT["source"]!='RSPagl')&(dfCT["target"]!='RSPagl')&(dfCT["source"]!='RSPd')&(dfCT["target"]!='RSPd')
         &(dfCT["source"]!='RSPv')&(dfCT["target"]!='RSPv')]
@@ -84,7 +84,7 @@ dfTC = dfTC.rename(columns={"ffb_c":"ffb"})
 if (module != 'inter') and (module != 'inter_predefined'):    
    
     if module == 'VisualMedial':
-        dfTC.loc[((dfTC["Cortical Target Module"] == "Visual")|(dfTC["Cortical Target Module"] == "Medial")),"Cortical Target Module"]='VisualMedial2'
+        dfTC.loc[((dfTC["Cortical Target Module"] == "Visual")|(dfTC["Cortical Target Module"] == "Medial")),"Cortical Target Module"]='VisualMedial'
         dfTC = dfTC[(dfTC["Cortical Target Module"] == module)]
         dfTC = dfTC[(dfTC["source"]!='RSPagl')&(dfTC["target"]!='RSPagl')&(dfTC["source"]!='RSPd')&(dfTC["target"]!='RSPd')
         &(dfTC["source"]!='RSPv')&(dfTC["target"]!='RSPv')]
@@ -135,8 +135,8 @@ data=[T_areas,hrc]
 data=np.transpose(data)
 columns = ['areas','h']
 dfiT = pd.DataFrame(data,columns=columns)
-dfiT.to_excel(output_dir+'initialhierarchy_TC9CT2_'+module+'.xls')
-dfiT.head()
+#dfiT.to_excel(output_dir+'initialhierarchy_TC9CT2_'+module+'.xls')
+#dfiT.head()
 
 
 # In[ ]: Iterate thalamic + cortical hierarhcy scores
@@ -209,11 +209,12 @@ for i_area in range(0,n_area):
         hr_iter.loc[i_area,'CortexThalamus'] = 'T'
 
 hr_iter = hr_iter[['areas','CortexThalamus', 0,n_iter] ]  
+hr_iter_save = hr_iter[(hr_iter.CortexThalamus=='C')]
 
 if CreConf == 1:
-    hr_iter.to_excel(output_dir+'TCCT_CCconf_iter_'+module+'.xls')
+    hr_iter_save.to_excel(output_dir+'TCCT_CCconf_iter_'+module+'.xls')
 elif CreConf == 0:
-    hr_iter.to_excel(output_dir+'TCCT_CCnoconf_iter_'+module+'.xls')
+    hr_iter_save.to_excel(output_dir+'TCCT_CCnoconf_iter_'+module+'.xls')
 
 ##########################################################
 
