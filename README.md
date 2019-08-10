@@ -1,9 +1,9 @@
-# Mouse Brain Hierarchy
+﻿# Mouse Brain Hierarchy
 
 * Hierarchy searching algorithm based on layer-projection patterns of cortico-cortical, thalamo-cortical, and cortico-thalamic connections constructed from viral tracing experiments using Cre-driver lines
 * Code used in Harris et al (2019) “The organization of corticocortical, thalamocortical, and corticothalamic connections by layer and cell class in the mouse brain”
 * If you have any questions or suggestions on the code, please contact Hannah Choi (hannahc@alleninstitute.org). 
-* Written on 6/24/2019.
+* Written on 8/9/2019.
 ************************************************************************************
 This Python code builds the hierarchy of the mouse cortical and thalamic regions based on clustered layer-projection patterns by maximizing the self-consistency of the obtained hierarchy measured by global hierarchy score, followed by iterative corrections. The hierarchy is first constructed based on the cortico-cortical connections only, which can be updated by taking thalamo-cortical and cortico-thalamic connections in to account. 
 
@@ -83,6 +83,8 @@ To evaluate how hierarchical the mouse brain is, compare the global hierarchy sc
 ## Inter-module and intra-module hierarchy
 To find hierarchies of different cortical modules or within each module, run ```run_CC_module.py```, ```run_TC_module.py```, and ```run_TCCT_module.py``` to obtain CC, CC+TC, and CC+TC+CT-based hierarchies. For inter/intra-module hierarchy, instead of searching for the optimal mapping based on the limited numbers of intra-module or inter-module connections every time, use the pre-generated mapping of each of 9 clusters to either FF or FB direction constructed from all CC and TC connections, available in ```clustermapping.xlsx```. In the paper, we show intra-module hierarchy for visual-medial module (module = 'VisualMedial') as well as inter-module hierarchy (module ='inter_predefined').
 
+## Figures and results
+The summerized results of pre-generated hierarchy scores and global hierarchy scores are available in the ```\Results``` folder. You can use ```FigureGenerator.py``` to produce summary figures based on the pre-generated results.
 
 ## Terms of Use
 https://alleninstitute.org/legal/terms-use/
