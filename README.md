@@ -1,9 +1,9 @@
 ﻿# Mouse Brain Hierarchy
 
 * Hierarchy searching algorithm based on layer-projection patterns of cortico-cortical, thalamo-cortical, and cortico-thalamic connections constructed from viral tracing experiments using Cre-driver lines
-* Code used in Harris et al (2019) “The organization of corticocortical, thalamocortical, and corticothalamic connections by layer and cell class in the mouse brain”
+* Code used in Harris et al (2019) “Hierarchical organization of cortical and thalamic connectivity”
 * If you have any questions or suggestions on the code, please contact Hannah Choi (hannahc@alleninstitute.org). 
-* Written on 8/9/2019.
+* Written 8/9/2019. Latest update 10/10/2019 by Hannah Choi
 ************************************************************************************
 This Python code builds the hierarchy of the mouse cortical and thalamic regions based on clustered layer-projection patterns by maximizing the self-consistency of the obtained hierarchy measured by global hierarchy score, followed by iterative corrections. The hierarchy is first constructed based on the cortico-cortical connections only, which can be updated by taking thalamo-cortical and cortico-thalamic connections in to account. 
 
